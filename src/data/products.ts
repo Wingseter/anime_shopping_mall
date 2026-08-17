@@ -1,4 +1,12 @@
-import { Product } from '../types';
+import { Product, EnchantLevel } from '../types';
+
+export const ENCHANT_LEVELS: EnchantLevel[] = [
+  { level: 0, name: '순정 기본형 (Standard)', multiplier: 1.0, glowColor: 'rgba(255, 255, 255, 0.4)', addedStats: '+0% ALL STATS' },
+  { level: 1, name: '+1 나노 플라즈마 강화 (Nano Plasma)', multiplier: 1.15, glowColor: 'rgba(0, 240, 255, 0.6)', addedStats: '+15% 공격력 / 전도율' },
+  { level: 2, name: '+3 차원 왜곡 인챈트 (Dimensional Rift)', multiplier: 1.45, glowColor: 'rgba(157, 0, 255, 0.7)', addedStats: '+45% 시공간 안정성' },
+  { level: 3, name: '+7 신성 강림 오버클럭 (Divine Overclock)', multiplier: 2.2, glowColor: 'rgba(255, 0, 127, 0.85)', addedStats: '+120% 마나 공명폭발' },
+  { level: 4, name: '+9 초월신격 성물 각성 (Godhood Transcendence)', multiplier: 3.5, glowColor: 'rgba(255, 215, 0, 1.0)', addedStats: '+250% 우주 파괴력 // SSR 번개 오라' },
+];
 
 export const PRODUCTS: Product[] = [
   {
@@ -8,6 +16,7 @@ export const PRODUCTS: Product[] = [
     title: '차원 절단 초진동 고주파 사이버 카타나',
     category: 'SPIRIT_WEAPON',
     rarity: 'MYTHIC_SSR',
+    faction: 'NEO_TOKYO',
     price: 189000,
     originalPrice: 280000,
     rating: 5.0,
@@ -17,6 +26,11 @@ export const PRODUCTS: Product[] = [
     description: '나노 입자 플라즈마 코어와 양자 초진동 칼날이 결합된 궁극의 사이버 웨폰. 현실과 시공간의 경계를 단칼에 베어냅니다.',
     lore: '네오 도쿄 2184년 지하 암시장에서 단 3자루만 복원된 전설의 검. 베어진 상처는 다른 평행우주로 전송됩니다.',
     image: 'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=800&auto=format&fit=crop&q=80',
+    thumbnails: [
+      'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=800&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=800&auto=format&fit=crop&q=80',
+    ],
     accentColor: '#00f0ff',
     glowColor: 'rgba(0, 240, 255, 0.8)',
     stats: {
@@ -24,14 +38,37 @@ export const PRODUCTS: Product[] = [
       resonance: 850,
       temporalStability: 320,
       manaConductivity: 940,
-      aestheticScore: 999
+      aestheticScore: 999,
     },
     features: [
       '양자 나노 플라즈마 칼날 가동',
       '소유자 신경망 즉각 싱크 0.001ms',
       '차원 왜곡 슬래시 파티클 방출',
-      '전파 인증 및 성물 등록 완료'
-    ]
+      '전파 인증 및 성물 등록 완료',
+    ],
+    synergyWith: 'relic-hoodie-07',
+    reviews: [
+      {
+        id: 'rev-1',
+        author: 'GhostInTheMatrix',
+        authorRank: 'S-Rank Runner',
+        authorFaction: 'NEO_TOKYO',
+        rating: 5,
+        date: '2026-08-15',
+        comment: '휘두르는 순간 실제 방 안의 공기가 베어지는 느낌입니다. 홀로그램 이펙트가 예술입니다.',
+        resonanceScore: 99.4,
+      },
+      {
+        id: 'rev-2',
+        author: 'CyberSamurai_JP',
+        authorRank: 'Grandmaster',
+        authorFaction: 'NEO_TOKYO',
+        rating: 5,
+        date: '2026-08-12',
+        comment: '배송이 3일 만에 웜홀로 도착했습니다. +9 강화하니까 방이 황금빛으로 물들었네요.',
+        resonanceScore: 98.9,
+      },
+    ],
   },
   {
     id: 'relic-angel-wings-02',
@@ -40,6 +77,7 @@ export const PRODUCTS: Product[] = [
     title: '성광 방출 안티-그래비티 천사 광익',
     category: 'COSMIC_FASHION',
     rarity: 'MYTHIC_SSR',
+    faction: 'CELESTIAL',
     price: 350000,
     originalPrice: 490000,
     rating: 4.9,
@@ -49,6 +87,10 @@ export const PRODUCTS: Product[] = [
     description: '중력 제어 반입자 드라이브로 착용자를 공중에 부유시키며 무지갯빛 홀로그램 성광을 360도로 방출하는 궁극의 패션 아머.',
     lore: '제3성단 아스트랄 생츄어리의 신관들이 착용하던 고대 아티팩트의 현대적 나노텍 복원품.',
     image: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&auto=format&fit=crop&q=80',
+    thumbnails: [
+      'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop&q=80',
+    ],
     accentColor: '#ffd700',
     glowColor: 'rgba(255, 215, 0, 0.8)',
     stats: {
@@ -56,14 +98,27 @@ export const PRODUCTS: Product[] = [
       resonance: 980,
       temporalStability: 910,
       manaConductivity: 990,
-      aestheticScore: 1000
+      aestheticScore: 1000,
     },
     features: [
       '무중력 비행 및 호버링 모드 탑재',
       '3D 오로라 프리즘 입자 항시 방출',
       '주변 시선 압도율 99.8%',
-      '마력 회복 속도 300% 증폭'
-    ]
+      '마력 회복 속도 300% 증폭',
+    ],
+    synergyWith: 'relic-orb-08',
+    reviews: [
+      {
+        id: 'rev-3',
+        author: 'SaintAura',
+        authorRank: 'High Priestess',
+        authorFaction: 'CELESTIAL',
+        rating: 5,
+        date: '2026-08-16',
+        comment: '실제 착용하고 걸어다니면 거실이 성전이 됩니다. 천사 광익 만세!',
+        resonanceScore: 100.0,
+      },
+    ],
   },
   {
     id: 'relic-dark-matter-03',
@@ -72,6 +127,7 @@ export const PRODUCTS: Product[] = [
     title: '무한 에너지 방출 블랙홀 특이점 배터리',
     category: 'DARK_MATTER',
     rarity: 'LEGENDARY',
+    faction: 'ABYSS',
     price: 125000,
     originalPrice: 160000,
     rating: 4.8,
@@ -81,6 +137,10 @@ export const PRODUCTS: Product[] = [
     description: '밀폐된 자기장 챔버 내부에 미니 블랙홀을 가두어 영구적인 중력파 및 전력을 공급하는 초차원 오버클럭 코어.',
     lore: '어두운 성간 심연에서 추출한 원시 암흑물질. 근처의 빛마저 미세하게 휘어지게 만듭니다.',
     image: 'https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=800&auto=format&fit=crop&q=80',
+    thumbnails: [
+      'https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=800&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=800&auto=format&fit=crop&q=80',
+    ],
     accentColor: '#9d00ff',
     glowColor: 'rgba(157, 0, 255, 0.8)',
     stats: {
@@ -88,14 +148,26 @@ export const PRODUCTS: Product[] = [
       resonance: 890,
       temporalStability: 500,
       manaConductivity: 870,
-      aestheticScore: 880
+      aestheticScore: 880,
     },
     features: [
       '영구 무한 동력 공급 (100,000시간 보증)',
       '주변 빛 굴절 중력 렌즈 효과',
       '사이버펑크 데스크테리어 종결',
-      '인공지능 과부하 0%'
-    ]
+      '인공지능 과부하 0%',
+    ],
+    reviews: [
+      {
+        id: 'rev-4',
+        author: 'VoidLord_X',
+        authorRank: 'Abyss Archon',
+        authorFaction: 'ABYSS',
+        rating: 5,
+        date: '2026-08-10',
+        comment: '모니터 옆에 두니 책상 주변의 현실이 찌그러집니다. 최고의 에너지원.',
+        resonanceScore: 97.2,
+      },
+    ],
   },
   {
     id: 'relic-chrono-watch-04',
@@ -104,6 +176,7 @@ export const PRODUCTS: Product[] = [
     title: '시간 지연 및 타키온 가속 크로노그래프',
     category: 'ANIME_RELIC',
     rarity: 'LEGENDARY',
+    faction: 'CHRONOS',
     price: 210000,
     originalPrice: 320000,
     rating: 5.0,
@@ -113,6 +186,9 @@ export const PRODUCTS: Product[] = [
     description: '다이얼을 누르는 순간 1.5초간 체감 시간을 1/1000배로 늦춰주는 타키온 입자 가속 손목시계.',
     lore: '시간의 수호자 엘리온이 남긴 설계도를 바탕으로 스위스 장인과 사이버네틱 연구소가 합작한 시계.',
     image: 'https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=800&auto=format&fit=crop&q=80',
+    thumbnails: [
+      'https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=800&auto=format&fit=crop&q=80',
+    ],
     accentColor: '#ff007f',
     glowColor: 'rgba(255, 0, 127, 0.8)',
     stats: {
@@ -120,14 +196,26 @@ export const PRODUCTS: Product[] = [
       resonance: 920,
       temporalStability: 1000,
       manaConductivity: 780,
-      aestheticScore: 970
+      aestheticScore: 970,
     },
     features: [
       '사파이어 크리스탈 홀로그램 다이얼',
       '타키온 시간 왜곡 기능 내장',
       '영구 오토매틱 키네틱 무브먼트',
-      '평행우주 세계선 표시'
-    ]
+      '평행우주 세계선 표시',
+    ],
+    reviews: [
+      {
+        id: 'rev-5',
+        author: 'TimeKeeper99',
+        authorRank: 'Chronos Sentinel',
+        authorFaction: 'CHRONOS',
+        rating: 5,
+        date: '2026-08-14',
+        comment: '회의 시간에 시계를 눌렀더니 체감 1초 만에 지나갔습니다. 최고.',
+        resonanceScore: 99.8,
+      },
+    ],
   },
   {
     id: 'relic-elixir-05',
@@ -136,6 +224,7 @@ export const PRODUCTS: Product[] = [
     title: '초은하 성운 분말 농축 영혼 각성수',
     category: 'DIVINE_ELIXIR',
     rarity: 'EPIC',
+    faction: 'CELESTIAL',
     price: 49000,
     originalPrice: 75000,
     rating: 4.9,
@@ -145,6 +234,9 @@ export const PRODUCTS: Product[] = [
     description: '마시는 순간 뇌내 세로토닌과 집중력이 500% 폭발하며 밤샘 코딩과 창작 활동을 지탱해주는 성간 에너지 드링크.',
     lore: '은하 중심부의 반짝이는 성운 먼지를 나노 여과하여 만든 천상의 영약.',
     image: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=800&auto=format&fit=crop&q=80',
+    thumbnails: [
+      'https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=800&auto=format&fit=crop&q=80',
+    ],
     accentColor: '#00ff66',
     glowColor: 'rgba(0, 255, 102, 0.8)',
     stats: {
@@ -152,14 +244,15 @@ export const PRODUCTS: Product[] = [
       resonance: 820,
       temporalStability: 750,
       manaConductivity: 910,
-      aestheticScore: 890
+      aestheticScore: 890,
     },
     features: [
       '타우린 5000mg + 스타더스트 에센스',
       '보틀 내부에서 별이 소용돌이치는 비주얼',
       '0 칼로리 100% 마나 충전',
-      '마실 때 입안에서 초신성 폭발'
-    ]
+      '마실 때 입안에서 초신성 폭발',
+    ],
+    reviews: [],
   },
   {
     id: 'relic-cyber-cat-06',
@@ -168,6 +261,7 @@ export const PRODUCTS: Product[] = [
     title: '초지능 홀로그램 탑재 사이버 야옹이',
     category: 'ANIME_RELIC',
     rarity: 'LEGENDARY',
+    faction: 'NEO_TOKYO',
     price: 159000,
     originalPrice: 220000,
     rating: 5.0,
@@ -177,6 +271,9 @@ export const PRODUCTS: Product[] = [
     description: '주인의 감정을 스캔하여 골골송(Purr)과 함께 주변의 부정적인 에너지를 정화하는 자율 인공지능 반려 메카.',
     lore: '아키하바라 지하 비밀 랩에서 탄생한 궁극의 힐링 안드로이드 캣.',
     image: 'https://images.unsplash.com/photo-1563089145-599997674d42?w=800&auto=format&fit=crop&q=80',
+    thumbnails: [
+      'https://images.unsplash.com/photo-1563089145-599997674d42?w=800&auto=format&fit=crop&q=80',
+    ],
     accentColor: '#ffe600',
     glowColor: 'rgba(255, 230, 0, 0.8)',
     stats: {
@@ -184,14 +281,15 @@ export const PRODUCTS: Product[] = [
       resonance: 950,
       temporalStability: 800,
       manaConductivity: 720,
-      aestheticScore: 990
+      aestheticScore: 990,
     },
     features: [
       '홀로그램 꼬리 인터랙션',
       '주인 음성 인식 & 레이저 눈빛 발사',
       '자동 무선 충전 패드 포함',
-      '귀여움 지수 무한대 측정 불능'
-    ]
+      '귀여움 지수 무한대 측정 불능',
+    ],
+    reviews: [],
   },
   {
     id: 'relic-hoodie-07',
@@ -200,6 +298,7 @@ export const PRODUCTS: Product[] = [
     title: '광학 미채 은폐 섬유 사이버네틱 롱코트',
     category: 'COSMIC_FASHION',
     rarity: 'EPIC',
+    faction: 'NEO_TOKYO',
     price: 99000,
     originalPrice: 149000,
     rating: 4.7,
@@ -209,6 +308,9 @@ export const PRODUCTS: Product[] = [
     description: '스위치를 켜면 주변 조명과 동기화되어 은은한 네온 회로가 직조 패턴으로 빛나는 방수/방검 사이버 의류.',
     lore: '도시의 어둠 속을 달리는 러너들이 애용하는 최첨단 방탄 섬유 코트.',
     image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&auto=format&fit=crop&q=80',
+    thumbnails: [
+      'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&auto=format&fit=crop&q=80',
+    ],
     accentColor: '#00f0ff',
     glowColor: 'rgba(0, 240, 255, 0.7)',
     stats: {
@@ -216,14 +318,16 @@ export const PRODUCTS: Product[] = [
       resonance: 600,
       temporalStability: 850,
       manaConductivity: 650,
-      aestheticScore: 960
+      aestheticScore: 960,
     },
     features: [
       'RGB 네온 라이팅 제어 스마트폰 연동',
       '내구도 영구 보증 특수 섬유',
       '비오는 밤길 시선 강탈',
-      '수납 포켓 14개 장착'
-    ]
+      '수납 포켓 14개 장착',
+    ],
+    synergyWith: 'relic-katana-01',
+    reviews: [],
   },
   {
     id: 'relic-orb-08',
@@ -232,6 +336,7 @@ export const PRODUCTS: Product[] = [
     title: '태양 플레어 봉인 황금 항성 오브',
     category: 'SPIRIT_WEAPON',
     rarity: 'MYTHIC_SSR',
+    faction: 'CELESTIAL',
     price: 299000,
     originalPrice: 420000,
     rating: 5.0,
@@ -241,6 +346,9 @@ export const PRODUCTS: Product[] = [
     description: '태양의 심장에서 채취한 원초의 불꽃을 수정구 안에 봉인하여 영원히 타오르게 만든 전설의 신기.',
     lore: '고대 태양신 라의 제단에 바쳐졌던 성물. 어둠을 일순간에 정화합니다.',
     image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop&q=80',
+    thumbnails: [
+      'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop&q=80',
+    ],
     accentColor: '#ffd700',
     glowColor: 'rgba(255, 215, 0, 0.9)',
     stats: {
@@ -248,13 +356,15 @@ export const PRODUCTS: Product[] = [
       resonance: 890,
       temporalStability: 600,
       manaConductivity: 980,
-      aestheticScore: 980
+      aestheticScore: 980,
     },
     features: [
       '실제 1,000 루멘 태양광 재현',
       '무선 충전 인테리어 거치대',
       '플레어 코로나 이펙트 상시 방출',
-      '우주적 정화 파동'
-    ]
-  }
+      '우주적 정화 파동',
+    ],
+    synergyWith: 'relic-angel-wings-02',
+    reviews: [],
+  },
 ];

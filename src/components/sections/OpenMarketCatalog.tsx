@@ -1,19 +1,23 @@
 import React, { useState, useMemo } from 'react';
 import { Product, Category } from '../../types';
 import { GlitchText } from '../ui/GlitchText';
-import { ShoppingCart, Search, Eye, Sparkles, Filter, Zap, Star } from 'lucide-react';
+import { ShoppingCart, Search, Eye, Sparkles, Filter, Zap, Star, Heart } from 'lucide-react';
 import { sound } from '../../engine/soundEngine';
 
 interface OpenMarketCatalogProps {
   products: Product[];
+  wishlistIds: string[];
   onAddToCart: (product: Product) => void;
   onSelectProduct: (product: Product) => void;
+  onToggleWishlist: (productId: string) => void;
 }
 
 export const OpenMarketCatalog: React.FC<OpenMarketCatalogProps> = ({
   products,
+  wishlistIds,
   onAddToCart,
   onSelectProduct,
+  onToggleWishlist,
 }) => {
   const [selectedCategory, setSelectedCategory] = useState<Category>('ALL');
   const [searchQuery, setSearchQuery] = useState('');
@@ -119,97 +123,112 @@ export const OpenMarketCatalog: React.FC<OpenMarketCatalogProps> = ({
 
         {/* Product Cards Hyper Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {filteredProducts.map((product) => (
-            <div
-              key={product.id}
-              className="hologram-card rounded-2xl p-4 flex flex-col justify-between group"
-            >
-              {/* Product Image & Badges */}
-              <div className="relative aspect-square rounded-xl overflow-hidden mb-4 border border-white/10 bg-black/40">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
+          {filteredProducts.map((product) => {
+            const isWish = wishlistIds.includes(product.id);
+            return (
+              <div
+                key={product.id}
+                className="hologram-card rounded-2xl p-4 flex flex-col justify-between group"
+              >
+                {/* Product Image & Badges */}
+                <div className="relative aspect-square rounded-xl overflow-hidden mb-4 border border-white/10 bg-black/40">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
 
-                {/* Rarity & Power Badges */}
-                <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-black/80 backdrop-blur-md border border-cyber-gold/40 text-[9px] font-mono font-bold text-cyber-gold">
-                  {product.rarity}
-                </div>
-                <div className="absolute top-2 right-2 px-2 py-0.5 rounded bg-black/80 backdrop-blur-md border border-cyber-cyan/40 text-[9px] font-mono text-cyber-cyan flex items-center space-x-1">
-                  <Zap className="w-2.5 h-2.5" />
-                  <span>{product.powerLevel.toLocaleString()}</span>
-                </div>
-
-                {/* Hover Quick Actions */}
-                <div className="absolute inset-0 bg-black/60 backdrop-blur-xs opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3">
+                  {/* Wishlist Heart Button */}
                   <button
-                    onClick={() => {
-                      sound.playClick();
-                      onSelectProduct(product);
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      sound.playWishlist();
+                      onToggleWishlist(product.id);
                     }}
-                    onMouseEnter={() => sound.playHover()}
-                    className="p-3 rounded-full bg-white/10 hover:bg-cyber-cyan hover:text-black border border-white/20 text-white transition-all transform translate-y-4 group-hover:translate-y-0"
-                    title="홀로그램 상세 보기"
+                    className={`absolute top-2 right-2 p-2 rounded-full backdrop-blur-md border transition-all z-20 ${
+                      isWish
+                        ? 'bg-cyber-pink text-white border-cyber-pink box-glow-pink'
+                        : 'bg-black/60 text-gray-300 border-white/20 hover:text-white'
+                    }`}
                   >
-                    <Eye className="w-5 h-5" />
+                    <Heart className={`w-3.5 h-3.5 ${isWish ? 'fill-white' : ''}`} />
                   </button>
+
+                  {/* Rarity & Power Badges */}
+                  <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-black/80 backdrop-blur-md border border-cyber-gold/40 text-[9px] font-mono font-bold text-cyber-gold">
+                    {product.rarity}
+                  </div>
+
+                  {/* Hover Quick Actions */}
+                  <div className="absolute inset-0 bg-black/60 backdrop-blur-xs opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3">
+                    <button
+                      onClick={() => {
+                        sound.playClick();
+                        onSelectProduct(product);
+                      }}
+                      onMouseEnter={() => sound.playHover()}
+                      className="p-3 rounded-full bg-white/10 hover:bg-cyber-cyan hover:text-black border border-white/20 text-white transition-all transform translate-y-4 group-hover:translate-y-0"
+                      title="홀로그램 상세 보기"
+                    >
+                      <Eye className="w-5 h-5" />
+                    </button>
+                    <button
+                      onClick={() => {
+                        sound.playEquip();
+                        onAddToCart(product);
+                      }}
+                      onMouseEnter={() => sound.playHover()}
+                      className="p-3 rounded-full bg-cyber-pink hover:bg-cyber-yellow hover:text-black text-white font-bold transition-all transform translate-y-4 group-hover:translate-y-0 box-glow-pink"
+                      title="장바구니 담기"
+                    >
+                      <ShoppingCart className="w-5 h-5" />
+                    </button>
+                  </div>
+                </div>
+
+                {/* Product Info */}
+                <div className="space-y-1.5 mb-4">
+                  <div className="text-[10px] font-mono text-gray-400 flex items-center justify-between">
+                    <span>{product.category}</span>
+                    <span className="flex items-center text-cyber-yellow">
+                      <Star className="w-3 h-3 fill-cyber-yellow mr-1" />
+                      {product.rating}
+                    </span>
+                  </div>
+                  <h4 className="font-orbitron font-bold text-sm text-white line-clamp-1 group-hover:text-cyber-cyan transition-colors">
+                    {product.name}
+                  </h4>
+                  <p className="text-[11px] font-mono text-gray-400 line-clamp-2">
+                    {product.title}
+                  </p>
+                </div>
+
+                {/* Price & Buy Button */}
+                <div className="pt-2 border-t border-white/10 flex items-center justify-between">
+                  <div>
+                    <div className="text-[9px] font-mono text-gray-500 line-through">
+                      {product.originalPrice.toLocaleString()} CC
+                    </div>
+                    <div className="text-base font-orbitron font-black text-cyber-gold">
+                      {product.price.toLocaleString()} <span className="text-[10px]">CC</span>
+                    </div>
+                  </div>
+
                   <button
                     onClick={() => {
                       sound.playEquip();
                       onAddToCart(product);
                     }}
                     onMouseEnter={() => sound.playHover()}
-                    className="p-3 rounded-full bg-cyber-pink hover:bg-cyber-yellow hover:text-black text-white font-bold transition-all transform translate-y-4 group-hover:translate-y-0 box-glow-pink"
-                    title="장바구니 담기"
+                    className="px-3.5 py-2 rounded-lg bg-cyber-cyan/15 hover:bg-cyber-cyan hover:text-black border border-cyber-cyan/40 text-cyber-cyan text-xs font-orbitron font-bold transition-all flex items-center space-x-1"
                   >
-                    <ShoppingCart className="w-5 h-5" />
+                    <ShoppingCart className="w-3.5 h-3.5" />
+                    <span>BUY</span>
                   </button>
                 </div>
               </div>
-
-              {/* Product Info */}
-              <div className="space-y-1.5 mb-4">
-                <div className="text-[10px] font-mono text-gray-400 flex items-center justify-between">
-                  <span>{product.category}</span>
-                  <span className="flex items-center text-cyber-yellow">
-                    <Star className="w-3 h-3 fill-cyber-yellow mr-1" />
-                    {product.rating}
-                  </span>
-                </div>
-                <h4 className="font-orbitron font-bold text-sm text-white line-clamp-1 group-hover:text-cyber-cyan transition-colors">
-                  {product.name}
-                </h4>
-                <p className="text-[11px] font-mono text-gray-400 line-clamp-2">
-                  {product.title}
-                </p>
-              </div>
-
-              {/* Price & Buy Button */}
-              <div className="pt-2 border-t border-white/10 flex items-center justify-between">
-                <div>
-                  <div className="text-[9px] font-mono text-gray-500 line-through">
-                    {product.originalPrice.toLocaleString()} CC
-                  </div>
-                  <div className="text-base font-orbitron font-black text-cyber-gold">
-                    {product.price.toLocaleString()} <span className="text-[10px]">CC</span>
-                  </div>
-                </div>
-
-                <button
-                  onClick={() => {
-                    sound.playEquip();
-                    onAddToCart(product);
-                  }}
-                  onMouseEnter={() => sound.playHover()}
-                  className="px-3.5 py-2 rounded-lg bg-cyber-cyan/15 hover:bg-cyber-cyan hover:text-black border border-cyber-cyan/40 text-cyber-cyan text-xs font-orbitron font-bold transition-all flex items-center space-x-1"
-                >
-                  <ShoppingCart className="w-3.5 h-3.5" />
-                  <span>BUY</span>
-                </button>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

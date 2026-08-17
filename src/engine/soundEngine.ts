@@ -6,9 +6,7 @@ class SoundEngine {
   private bgmInterval: number | null = null;
   private isBgmPlaying: boolean = false;
 
-  constructor() {
-    // Lazy initialize on first interaction
-  }
+  constructor() {}
 
   private initContext() {
     if (!this.ctx) {
@@ -57,9 +55,7 @@ class SoundEngine {
 
       osc.start();
       osc.stop(this.ctx.currentTime + 0.08);
-    } catch {
-      // AudioContext fallback handling
-    }
+    } catch {}
   }
 
   // 2. Holographic UI Click / Trigger
@@ -95,7 +91,6 @@ class SoundEngine {
       this.initContext();
       if (!this.ctx) return;
 
-      // White Noise burst with lowpass filter sweep
       const bufferSize = this.ctx.sampleRate * 0.25;
       const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
       const output = buffer.getChannelData(0);
@@ -159,7 +154,6 @@ class SoundEngine {
       this.initContext();
       if (!this.ctx) return;
 
-      // Thunder rumble
       const osc = this.ctx.createOscillator();
       const gain = this.ctx.createGain();
       osc.type = 'sawtooth';
@@ -172,8 +166,7 @@ class SoundEngine {
       osc.start();
       osc.stop(this.ctx.currentTime + 0.8);
 
-      // Angelic Chords (SSR Sparkle)
-      const chords = [523.25, 659.25, 783.99, 1046.50, 1318.51]; // C Major arpeggio
+      const chords = [523.25, 659.25, 783.99, 1046.50, 1318.51];
       chords.forEach((freq, idx) => {
         const chordOsc = this.ctx!.createOscillator();
         const chordGain = this.ctx!.createGain();
@@ -217,7 +210,133 @@ class SoundEngine {
     } catch {}
   }
 
-  // 7. Ambient Cyber Synthwave BGM Loop Generator
+  // 7. Star Wishlist Sparkle SFX
+  public playWishlist() {
+    if (this.isMuted) return;
+    try {
+      this.initContext();
+      if (!this.ctx) return;
+
+      const notes = [987.77, 1318.51, 1567.98, 2093.00];
+      notes.forEach((freq, i) => {
+        const osc = this.ctx!.createOscillator();
+        const gain = this.ctx!.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, this.ctx!.currentTime + i * 0.05);
+        gain.gain.setValueAtTime(0.05, this.ctx!.currentTime + i * 0.05);
+        gain.gain.exponentialRampToValueAtTime(0.001, this.ctx!.currentTime + i * 0.05 + 0.3);
+        osc.connect(gain);
+        gain.connect(this.ctx!.destination);
+        osc.start(this.ctx!.currentTime + i * 0.05);
+        osc.stop(this.ctx!.currentTime + i * 0.05 + 0.3);
+      });
+    } catch {}
+  }
+
+  // 8. Enchant Upgrade Laser Strike SFX
+  public playEnchant(level: number) {
+    if (this.isMuted) return;
+    try {
+      this.initContext();
+      if (!this.ctx) return;
+
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+
+      osc.type = 'sawtooth';
+      const baseFreq = 400 + level * 120;
+      osc.frequency.setValueAtTime(baseFreq, this.ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(baseFreq * 2.5, this.ctx.currentTime + 0.2);
+
+      gain.gain.setValueAtTime(0.12, this.ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.25);
+
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+
+      osc.start();
+      osc.stop(this.ctx.currentTime + 0.25);
+    } catch {}
+  }
+
+  // 9. Jet Drone Fly-In Swoosh (초고속 제트 비행 굉음)
+  public playDroneFlyIn() {
+    if (this.isMuted) return;
+    try {
+      this.initContext();
+      if (!this.ctx) return;
+
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(120, this.ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(1400, this.ctx.currentTime + 0.4);
+      osc.frequency.exponentialRampToValueAtTime(300, this.ctx.currentTime + 0.9);
+
+      gain.gain.setValueAtTime(0.01, this.ctx.currentTime);
+      gain.gain.linearRampToValueAtTime(0.2, this.ctx.currentTime + 0.35);
+      gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.9);
+
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+
+      osc.start();
+      osc.stop(this.ctx.currentTime + 0.9);
+    } catch {}
+  }
+
+  // 10. Tractor Beam Ingest (중력 견인 빔 흡수음)
+  public playTractorBeam() {
+    if (this.isMuted) return;
+    try {
+      this.initContext();
+      if (!this.ctx) return;
+
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(800, this.ctx.currentTime);
+      osc.frequency.linearRampToValueAtTime(150, this.ctx.currentTime + 0.6);
+
+      gain.gain.setValueAtTime(0.18, this.ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.6);
+
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+
+      osc.start();
+      osc.stop(this.ctx.currentTime + 0.6);
+    } catch {}
+  }
+
+  // 11. Bullet-Time Fly-In Zoom (화면 앞 초고속 돌진 줌음)
+  public playBulletTimeFlyIn() {
+    if (this.isMuted) return;
+    try {
+      this.initContext();
+      if (!this.ctx) return;
+
+      // Heavy bass compression
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(60, this.ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(600, this.ctx.currentTime + 0.2);
+      osc.frequency.exponentialRampToValueAtTime(40, this.ctx.currentTime + 0.7);
+
+      gain.gain.setValueAtTime(0.25, this.ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.7);
+
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+      osc.start();
+      osc.stop(this.ctx.currentTime + 0.7);
+    } catch {}
+  }
+
+  // Ambient Cyber Synthwave BGM Loop Generator
   public startBGM() {
     if (this.isBgmPlaying || this.isMuted) return;
     try {
@@ -226,7 +345,7 @@ class SoundEngine {
 
       this.isBgmPlaying = true;
       const bpm = 110;
-      const stepTime = 60 / bpm / 2; // 1/8th note
+      const stepTime = 60 / bpm / 2;
 
       const bassNotes = [110, 110, 130.81, 146.83, 164.81, 146.83, 130.81, 98.00];
       let step = 0;
@@ -237,7 +356,6 @@ class SoundEngine {
         const now = this.ctx.currentTime;
         const noteFreq = bassNotes[step % bassNotes.length];
 
-        // Bass Synth
         const osc = this.ctx.createOscillator();
         const filter = this.ctx.createBiquadFilter();
         const gain = this.ctx.createGain();
@@ -259,7 +377,6 @@ class SoundEngine {
         osc.start(now);
         osc.stop(now + stepTime);
 
-        // Ambient Arp high note
         if (step % 2 === 0) {
           const arpOsc = this.ctx.createOscillator();
           const arpGain = this.ctx.createGain();
