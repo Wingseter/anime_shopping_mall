@@ -1,6 +1,11 @@
-# Existing project files and folders
+# Node modules & build
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# Existing non-frontend project files and folders
 /docs/
-/src/
 /data/
 /youtube_transcript_4RmmP7E-Dpk.txt
 /.vscode/
@@ -14,33 +19,12 @@ __pycache__/
 # C extensions
 *.so
 
-# Distribution / packaging
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-share/python-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-
 # Virtual environments
 .env
 .venv
 env/
 venv/
 ENV/
-env.bak/
-venv.bak/
 
 # Operating System Files
 .DS_Store

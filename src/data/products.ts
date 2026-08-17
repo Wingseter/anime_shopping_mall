@@ -1,0 +1,260 @@
+import { Product } from '../types';
+
+export const PRODUCTS: Product[] = [
+  {
+    id: 'relic-katana-01',
+    name: 'Muramasa Cybernetic Blade V9',
+    jpName: '妖刀・サイバー村正零式',
+    title: '차원 절단 초진동 고주파 사이버 카타나',
+    category: 'SPIRIT_WEAPON',
+    rarity: 'MYTHIC_SSR',
+    price: 189000,
+    originalPrice: 280000,
+    rating: 5.0,
+    stock: 3,
+    dimensions: '108cm x 5.2cm x 3.1cm',
+    powerLevel: 99999,
+    description: '나노 입자 플라즈마 코어와 양자 초진동 칼날이 결합된 궁극의 사이버 웨폰. 현실과 시공간의 경계를 단칼에 베어냅니다.',
+    lore: '네오 도쿄 2184년 지하 암시장에서 단 3자루만 복원된 전설의 검. 베어진 상처는 다른 평행우주로 전송됩니다.',
+    image: 'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=800&auto=format&fit=crop&q=80',
+    accentColor: '#00f0ff',
+    glowColor: 'rgba(0, 240, 255, 0.8)',
+    stats: {
+      attack: 999,
+      resonance: 850,
+      temporalStability: 320,
+      manaConductivity: 940,
+      aestheticScore: 999
+    },
+    features: [
+      '양자 나노 플라즈마 칼날 가동',
+      '소유자 신경망 즉각 싱크 0.001ms',
+      '차원 왜곡 슬래시 파티클 방출',
+      '전파 인증 및 성물 등록 완료'
+    ]
+  },
+  {
+    id: 'relic-angel-wings-02',
+    name: 'Seraphim Celestial Nanotech Wings',
+    jpName: '熾天使の量子光翼',
+    title: '성광 방출 안티-그래비티 천사 광익',
+    category: 'COSMIC_FASHION',
+    rarity: 'MYTHIC_SSR',
+    price: 350000,
+    originalPrice: 490000,
+    rating: 4.9,
+    stock: 7,
+    dimensions: '가변 전개 폭 220cm',
+    powerLevel: 88400,
+    description: '중력 제어 반입자 드라이브로 착용자를 공중에 부유시키며 무지갯빛 홀로그램 성광을 360도로 방출하는 궁극의 패션 아머.',
+    lore: '제3성단 아스트랄 생츄어리의 신관들이 착용하던 고대 아티팩트의 현대적 나노텍 복원품.',
+    image: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&auto=format&fit=crop&q=80',
+    accentColor: '#ffd700',
+    glowColor: 'rgba(255, 215, 0, 0.8)',
+    stats: {
+      attack: 420,
+      resonance: 980,
+      temporalStability: 910,
+      manaConductivity: 990,
+      aestheticScore: 1000
+    },
+    features: [
+      '무중력 비행 및 호버링 모드 탑재',
+      '3D 오로라 프리즘 입자 항시 방출',
+      '주변 시선 압도율 99.8%',
+      '마력 회복 속도 300% 증폭'
+    ]
+  },
+  {
+    id: 'relic-dark-matter-03',
+    name: 'Abyssal Dark Matter Hyper-Core',
+    jpName: '深淵の暗黒物質特異点炉',
+    title: '무한 에너지 방출 블랙홀 특이점 배터리',
+    category: 'DARK_MATTER',
+    rarity: 'LEGENDARY',
+    price: 125000,
+    originalPrice: 160000,
+    rating: 4.8,
+    stock: 12,
+    dimensions: '구체 직경 15cm',
+    powerLevel: 76500,
+    description: '밀폐된 자기장 챔버 내부에 미니 블랙홀을 가두어 영구적인 중력파 및 전력을 공급하는 초차원 오버클럭 코어.',
+    lore: '어두운 성간 심연에서 추출한 원시 암흑물질. 근처의 빛마저 미세하게 휘어지게 만듭니다.',
+    image: 'https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=800&auto=format&fit=crop&q=80',
+    accentColor: '#9d00ff',
+    glowColor: 'rgba(157, 0, 255, 0.8)',
+    stats: {
+      attack: 650,
+      resonance: 890,
+      temporalStability: 500,
+      manaConductivity: 870,
+      aestheticScore: 880
+    },
+    features: [
+      '영구 무한 동력 공급 (100,000시간 보증)',
+      '주변 빛 굴절 중력 렌즈 효과',
+      '사이버펑크 데스크테리어 종결',
+      '인공지능 과부하 0%'
+    ]
+  },
+  {
+    id: 'relic-chrono-watch-04',
+    name: 'Chronos Paradox Time-Stop Dial',
+    jpName: '時空停止クロノメーター',
+    title: '시간 지연 및 타키온 가속 크로노그래프',
+    category: 'ANIME_RELIC',
+    rarity: 'LEGENDARY',
+    price: 210000,
+    originalPrice: 320000,
+    rating: 5.0,
+    stock: 5,
+    dimensions: '42mm 티타늄 케이스',
+    powerLevel: 82000,
+    description: '다이얼을 누르는 순간 1.5초간 체감 시간을 1/1000배로 늦춰주는 타키온 입자 가속 손목시계.',
+    lore: '시간의 수호자 엘리온이 남긴 설계도를 바탕으로 스위스 장인과 사이버네틱 연구소가 합작한 시계.',
+    image: 'https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=800&auto=format&fit=crop&q=80',
+    accentColor: '#ff007f',
+    glowColor: 'rgba(255, 0, 127, 0.8)',
+    stats: {
+      attack: 300,
+      resonance: 920,
+      temporalStability: 1000,
+      manaConductivity: 780,
+      aestheticScore: 970
+    },
+    features: [
+      '사파이어 크리스탈 홀로그램 다이얼',
+      '타키온 시간 왜곡 기능 내장',
+      '영구 오토매틱 키네틱 무브먼트',
+      '평행우주 세계선 표시'
+    ]
+  },
+  {
+    id: 'relic-elixir-05',
+    name: 'Ambrosia Star-Dust Elixir 500ml',
+    jpName: '星屑の神薬・アムブロシア',
+    title: '초은하 성운 분말 농축 영혼 각성수',
+    category: 'DIVINE_ELIXIR',
+    rarity: 'EPIC',
+    price: 49000,
+    originalPrice: 75000,
+    rating: 4.9,
+    stock: 45,
+    dimensions: '500ml 크리스탈 보틀',
+    powerLevel: 34000,
+    description: '마시는 순간 뇌내 세로토닌과 집중력이 500% 폭발하며 밤샘 코딩과 창작 활동을 지탱해주는 성간 에너지 드링크.',
+    lore: '은하 중심부의 반짝이는 성운 먼지를 나노 여과하여 만든 천상의 영약.',
+    image: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=800&auto=format&fit=crop&q=80',
+    accentColor: '#00ff66',
+    glowColor: 'rgba(0, 255, 102, 0.8)',
+    stats: {
+      attack: 100,
+      resonance: 820,
+      temporalStability: 750,
+      manaConductivity: 910,
+      aestheticScore: 890
+    },
+    features: [
+      '타우린 5000mg + 스타더스트 에센스',
+      '보틀 내부에서 별이 소용돌이치는 비주얼',
+      '0 칼로리 100% 마나 충전',
+      '마실 때 입안에서 초신성 폭발'
+    ]
+  },
+  {
+    id: 'relic-cyber-cat-06',
+    name: 'Neko-Bot Mecha Companion Mk.II',
+    jpName: '電脳自율型メカ猫二号機',
+    title: '초지능 홀로그램 탑재 사이버 야옹이',
+    category: 'ANIME_RELIC',
+    rarity: 'LEGENDARY',
+    price: 159000,
+    originalPrice: 220000,
+    rating: 5.0,
+    stock: 9,
+    dimensions: '35cm x 18cm x 22cm',
+    powerLevel: 62000,
+    description: '주인의 감정을 스캔하여 골골송(Purr)과 함께 주변의 부정적인 에너지를 정화하는 자율 인공지능 반려 메카.',
+    lore: '아키하바라 지하 비밀 랩에서 탄생한 궁극의 힐링 안드로이드 캣.',
+    image: 'https://images.unsplash.com/photo-1563089145-599997674d42?w=800&auto=format&fit=crop&q=80',
+    accentColor: '#ffe600',
+    glowColor: 'rgba(255, 230, 0, 0.8)',
+    stats: {
+      attack: 250,
+      resonance: 950,
+      temporalStability: 800,
+      manaConductivity: 720,
+      aestheticScore: 990
+    },
+    features: [
+      '홀로그램 꼬리 인터랙션',
+      '주인 음성 인식 & 레이저 눈빛 발사',
+      '자동 무선 충전 패드 포함',
+      '귀여움 지수 무한대 측정 불능'
+    ]
+  },
+  {
+    id: 'relic-hoodie-07',
+    name: 'Ghost-in-Shell Cyberpunk Stealth Coat',
+    jpName: '光学迷彩サイバーロングコート',
+    title: '광학 미채 은폐 섬유 사이버네틱 롱코트',
+    category: 'COSMIC_FASHION',
+    rarity: 'EPIC',
+    price: 99000,
+    originalPrice: 149000,
+    rating: 4.7,
+    stock: 20,
+    dimensions: 'Free Oversized Fit',
+    powerLevel: 41000,
+    description: '스위치를 켜면 주변 조명과 동기화되어 은은한 네온 회로가 직조 패턴으로 빛나는 방수/방검 사이버 의류.',
+    lore: '도시의 어둠 속을 달리는 러너들이 애용하는 최첨단 방탄 섬유 코트.',
+    image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&auto=format&fit=crop&q=80',
+    accentColor: '#00f0ff',
+    glowColor: 'rgba(0, 240, 255, 0.7)',
+    stats: {
+      attack: 180,
+      resonance: 600,
+      temporalStability: 850,
+      manaConductivity: 650,
+      aestheticScore: 960
+    },
+    features: [
+      'RGB 네온 라이팅 제어 스마트폰 연동',
+      '내구도 영구 보증 특수 섬유',
+      '비오는 밤길 시선 강탈',
+      '수납 포켓 14개 장착'
+    ]
+  },
+  {
+    id: 'relic-orb-08',
+    name: 'Orb of Eternal Sol (Solar Flare)',
+    jpName: '恒星太陽の原初宝珠',
+    title: '태양 플레어 봉인 황금 항성 오브',
+    category: 'SPIRIT_WEAPON',
+    rarity: 'MYTHIC_SSR',
+    price: 299000,
+    originalPrice: 420000,
+    rating: 5.0,
+    stock: 2,
+    dimensions: '구체 직경 20cm',
+    powerLevel: 94000,
+    description: '태양의 심장에서 채취한 원초의 불꽃을 수정구 안에 봉인하여 영원히 타오르게 만든 전설의 신기.',
+    lore: '고대 태양신 라의 제단에 바쳐졌던 성물. 어둠을 일순간에 정화합니다.',
+    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop&q=80',
+    accentColor: '#ffd700',
+    glowColor: 'rgba(255, 215, 0, 0.9)',
+    stats: {
+      attack: 940,
+      resonance: 890,
+      temporalStability: 600,
+      manaConductivity: 980,
+      aestheticScore: 980
+    },
+    features: [
+      '실제 1,000 루멘 태양광 재현',
+      '무선 충전 인테리어 거치대',
+      '플레어 코로나 이펙트 상시 방출',
+      '우주적 정화 파동'
+    ]
+  }
+];

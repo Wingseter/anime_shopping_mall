@@ -1,0 +1,173 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --neon-cyan: #00f0ff;
+  --neon-pink: #ff007f;
+  --neon-purple: #9d00ff;
+  --neon-yellow: #ffe600;
+  --neon-green: #00ff66;
+  --neon-gold: #ffd700;
+}
+
+/* Custom Smooth Scrolling & Overkill Visual Baseline */
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  font-family: 'Rajdhani', 'Noto Sans KR', sans-serif;
+  background-color: #03060f;
+  color: #f0f4ff;
+  overflow-x: hidden;
+  user-select: none;
+}
+
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #050814;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--neon-cyan), var(--neon-pink));
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--neon-pink), var(--neon-yellow));
+}
+
+/* Neon Glow Utilities */
+.glow-cyan {
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.8), 0 0 20px rgba(0, 240, 255, 0.4);
+}
+.glow-pink {
+  text-shadow: 0 0 10px rgba(255, 0, 127, 0.8), 0 0 20px rgba(255, 0, 127, 0.4);
+}
+.glow-gold {
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.9), 0 0 25px rgba(255, 170, 0, 0.6);
+}
+.box-glow-cyan {
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.35), inset 0 0 15px rgba(0, 240, 255, 0.15);
+}
+.box-glow-pink {
+  box-shadow: 0 0 25px rgba(255, 0, 127, 0.35), inset 0 0 15px rgba(255, 0, 127, 0.15);
+}
+.box-glow-gold {
+  box-shadow: 0 0 35px rgba(255, 215, 0, 0.5), inset 0 0 20px rgba(255, 215, 0, 0.2);
+}
+
+/* Holographic Iridescent Foil Card Effect */
+.hologram-card {
+  position: relative;
+  background: rgba(8, 12, 28, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  overflow: hidden;
+}
+
+.hologram-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 20%,
+    rgba(0, 240, 255, 0.15) 30%,
+    rgba(255, 0, 127, 0.2) 50%,
+    rgba(255, 215, 0, 0.25) 70%,
+    transparent 80%
+  );
+  transform: rotate(25deg) translateY(-100%);
+  transition: transform 0.8s ease;
+  pointer-events: none;
+}
+
+.hologram-card:hover::before {
+  transform: rotate(25deg) translateY(100%);
+}
+
+.hologram-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(0, 240, 255, 0.8);
+  box-shadow: 0 15px 40px rgba(0, 240, 255, 0.35), 0 0 20px rgba(255, 0, 127, 0.25);
+}
+
+/* Glitch Animation */
+@keyframes glitch-anim-1 {
+  0% { clip-path: inset(20% 0 80% 0); transform: translate(-2px, 1px); }
+  20% { clip-path: inset(60% 0 10% 0); transform: translate(3px, -2px); }
+  40% { clip-path: inset(40% 0 50% 0); transform: translate(-3px, 2px); }
+  60% { clip-path: inset(80% 0 5% 0); transform: translate(2px, -1px); }
+  80% { clip-path: inset(10% 0 70% 0); transform: translate(-1px, 3px); }
+  100% { clip-path: inset(30% 0 50% 0); transform: translate(1px, -2px); }
+}
+
+@keyframes glitch-anim-2 {
+  0% { clip-path: inset(10% 0 60% 0); transform: translate(2px, -1px); }
+  20% { clip-path: inset(70% 0 20% 0); transform: translate(-3px, 2px); }
+  40% { clip-path: inset(20% 0 40% 0); transform: translate(1px, -3px); }
+  60% { clip-path: inset(50% 0 30% 0); transform: translate(-2px, 1px); }
+  80% { clip-path: inset(90% 0 5% 0); transform: translate(3px, -2px); }
+  100% { clip-path: inset(0% 0 90% 0); transform: translate(-1px, 2px); }
+}
+
+.glitch-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.glitch-wrapper::before,
+.glitch-wrapper::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch-wrapper::before {
+  color: var(--neon-cyan);
+  animation: glitch-anim-1 2s infinite linear alternate-reverse;
+  z-index: -1;
+}
+
+.glitch-wrapper::after {
+  color: var(--neon-pink);
+  animation: glitch-anim-2 2.5s infinite linear alternate-reverse;
+  z-index: -2;
+}
+
+/* Cyber Cyberpunk Grid Background */
+.cyber-grid {
+  background-size: 50px 50px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 240, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 240, 255, 0.08) 1px, transparent 1px);
+}
+
+/* Biometric Scan Line */
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(1000%); }
+}
+.scanline-effect {
+  animation: scanline 2.5s linear infinite;
+}
+
+/* SSR Rainbow Gacha Sheen */
+@keyframes rainbow-sheen {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+.ssr-rainbow {
+  animation: rainbow-sheen 3s linear infinite;
+}
